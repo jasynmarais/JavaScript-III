@@ -109,6 +109,18 @@ console.log(car.drive(10), car.crash(), car.repair());
   - Babies should have the ability to play, which persons don't.
   - By playing, a string is returned with some text of your choosing.
 
+  */
+function Baby(name, age) {
+	Person.call(this, name, age);
+}
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+	return `Baby played and said "Goo-goo ga-ga".`;
+};
+var baby = new Baby('Arianna', 0.5);
+console.log(baby.greet(), baby.play());
+/*
+
   TASK 4
 
   Use your imagination and come up with constructors that allow to build objects
