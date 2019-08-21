@@ -128,7 +128,59 @@ console.log(baby.greet(), baby.play());
   complicated one with lots of state. Surprise us!
 
 */
-
+function Animal(name, type, wild, sound) {
+	this.name = (name === null ? 'X' : name);
+	this.type = type;
+	this.tamed = !wild;
+	this.needName = false;
+	this.sound = sound;
+	this.edibles = {
+		dog: ['dog food', 'mice', 'bones'],
+		cat: ['cat food', 'fish', 'meat'],
+		fox: ['rat', 'bird', 'frog'],
+	};
+}
+Animal.prototype.talk = function () {
+	return `My name is ${this.name} and I'm a ${this.type}. ${this.makeSound()}`;
+};
+Animal.prototype.makeSound = function () {
+	return `${this.sound}!`;
+};
+Animal.prototype.eat = function (something) {
+	let isFoodEdible = false;
+	if (this.edibles.hasOwnProperty(this.type)) {
+		isFoodEdible = this.edibles[this.type].includes(something);
+	}
+	return `${this.name} tried eating ${something}` + (isFoodEdible ? ' and liked it!' : ' but didn\'t like it.');
+};
+Animal.prototype.giveName = function (newName) {
+	if (this.tamed && this.needName) {
+		this.name = newName;
+		this.needName = false;
+		return `This ${this.type} is now called ${newName}.`;
+	} else if (!this.tamed) {
+		return `You can't give a name to this ${this.type} because it hasn't been tamed!`;
+	}
+	return `This ${this.type} already has a name!`;
+};
+Animal.prototype.tame = function () {
+	if (!this.tamed) {
+		let chanceToTame = Math.random();
+		if (chanceToTame > 0.5) {
+			this.tamed = true;
+			this.needName = true;
+			return `You have successfully tamed this ${this.name} ${this.type}! Don't forget to give it a name!`;
+		}
+		return `You have failed to tame this ${this.name} ${this.type}.`;
+	}
+	return `${this.name} is already your pet!`;
+};
+var aDog = new Animal('Rambo', 'dog', false, 'Wooooooff');
+var aCat = new Animal('Babou', 'cat', false, 'Miaawwww');
+var aFox = new Animal(null, 'fox', true, 'Hoooooooooowl');
+console.log(aDog.talk(), aCat.talk(), aFox.talk());
+console.log(aDog.eat('cat food'), aCat.eat('cat food'), aFox.eat('cat food'));
+console.log(aFox.tame(), aFox.giveName('Princess Carolyn'));
 /*
 
   STRETCH TASK
