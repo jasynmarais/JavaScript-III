@@ -23,6 +23,16 @@ function sayName(name) {
 
 // code example for Implicit Binding
 
+const canDo = {
+    greeting: 'Hi',
+    giveGreeting: function(name){
+        console.log (`${this.greeting} I'm ${name} look at me!`);
+        console.log(this);
+    }
+};
+
+canDo.giveGreeting("Jasyn");
+
 // Principle 3
 
 // code example for New Binding
