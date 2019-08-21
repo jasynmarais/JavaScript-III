@@ -13,6 +13,12 @@
 
 // code example for Window Binding
 
+function sayName(name) {
+    console.log(this);
+    return name;
+  }
+  sayName("Jasyn");
+
 // Principle 2
 
 // code example for Implicit Binding
