@@ -46,3 +46,11 @@ console.log('Principle 3:', (new ConstructorThis()));
 
 // code example for Explicit Binding
 
+function multiply(n1, n2) {
+	console.log(`${n1} * ${n2} = ${n1*n2}`);
+	return this;
+}
+console.log('Principle 4 Call:', multiply.call('call explicit binding', 10, 20));
+console.log('Principle 4 Apply:', multiply.apply('apply explicit binding', [10, 20]));
+const bindMultiply = multiply.bind('bind explicit binding');
+console.log('Principle 4 Bind:', bindMultiply(10, 20));
