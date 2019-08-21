@@ -37,7 +37,10 @@ canDo.giveGreeting("Jasyn");
 
 // code example for New Binding
 
-
+function ConstructorThis() {
+	this.binding = 'New Binding';
+}
+console.log('Principle 3:', (new ConstructorThis()));
 
 // Principle 4
 
