@@ -49,20 +49,20 @@
   */
 
  function Person(name, age) {
-	this.name = name;
-	this.age = age;
-	this.stomach = [];
+	      this.name = name;
+	      this.age = age;
+	      this.stomach = [];
 }
 Person.prototype.greet = function () {
-	return `My name is ${this.name} and I'm ${this.age} years old.`;
+	      return `My name is ${this.name} and I'm ${this.age} years old.`;
 };
 Person.prototype.eat = function (edible) {
-	this.stomach.push(edible);
-	return `${this.name} just ate ${edible}.`;
+	      this.stomach.push(edible);
+	      return `${this.name} just ate ${edible}.`;
 };
 Person.prototype.poop = function () {
-	this.stomach = [];
-	return `Stomach is empty now.`;
+	      this.stomach = [];
+	      return `Stomach is empty now.`;
 };
 var me = new Person('Jasyn', 38);
 console.log(me.greet(), me.eat('Biltong'), me.poop());
@@ -78,25 +78,25 @@ console.log(me.greet(), me.eat('Biltong'), me.poop());
   - A repaired car can be driven again.
 */
 function Car(model, make) {
-	this.model = model;
-	this.make = make;
-	this.odometer = 0;
-	this.canDrive = true;
+	      this.model = model;
+	      this.make = make;
+	      this.odometer = 0;
+	      this.canDrive = true;
 }
 Car.prototype.drive = function (distance) {
-	if (this.canDrive) {
-		this.odometer += Number(distance);
-		return `Drove ${distance} miles. Odometer: ${this.odometer}.`;
+	      if (this.canDrive) {
+		            this.odometer += Number(distance);
+		            return `Drove ${distance} miles. Odometer: ${this.odometer}.`;
 	}
-	return `I crashed at ${this.odometer} miles!`;
+	      return `I crashed at ${this.odometer} miles!`;
 };
 Car.prototype.crash = function () {
-	this.canDrive = false;
-	return `I just crashed.`;
+	      this.canDrive = false;
+	      return `I just crashed.`;
 };
 Car.prototype.repair = function () {
-	this.canDrive = true;
-	return `I've been repaired.`;
+	      this.canDrive = true;
+	      return `I've been repaired.`;
 };
 var car = new Car('2006', 'Opel');
 console.log(car.drive(10), car.crash(), car.repair());
@@ -111,11 +111,11 @@ console.log(car.drive(10), car.crash(), car.repair());
 
   */
 function Baby(name, age) {
-	Person.call(this, name, age);
+	      Person.call(this, name, age);
 }
 Baby.prototype = Object.create(Person.prototype);
 Baby.prototype.play = function () {
-	return `Baby played and said "Goo-goo ga-ga".`;
+	  return `Baby played and said "Goo-goo ga-ga".`;
 };
 var baby = new Baby('Arianna', 0.5);
 console.log(baby.greet(), baby.play());
