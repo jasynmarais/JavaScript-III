@@ -77,7 +77,30 @@ console.log(me.greet(), me.eat('Biltong'), me.poop());
   - Give cars the ability to be repaired.
   - A repaired car can be driven again.
 */
-
+function Car(model, make) {
+	this.model = model;
+	this.make = make;
+	this.odometer = 0;
+	this.canDrive = true;
+}
+Car.prototype.drive = function (distance) {
+	if (this.canDrive) {
+		this.odometer += Number(distance);
+		return `Drove ${distance} miles. Odometer: ${this.odometer}.`;
+	}
+	return `I crashed at ${this.odometer} miles!`;
+};
+Car.prototype.crash = function () {
+	this.canDrive = false;
+	return `I just crashed.`;
+};
+Car.prototype.repair = function () {
+	this.canDrive = true;
+	return `I've been repaired.`;
+};
+var car = new Car('2006', 'Opel');
+console.log(car.drive(10), car.crash(), car.repair());
+/*
 
   TASK 3
 
