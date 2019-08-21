@@ -35,7 +35,7 @@
   console.log(jumbo.isFlying)          // false
 */
 
-
+/*
 
   TASK 1
 
@@ -46,14 +46,27 @@
   - Give persons the ability to poop.
   - When pooping, the stomach should empty.
 
-  Person.prototype.eatEdibles = function (food) {
-  stomach = [];
-  return stomach.push(food);
-}
-Person.prototype.poop = function(){
-  return stomach = [];
-};
+  */
 
+ function Person(name, age) {
+	this.name = name;
+	this.age = age;
+	this.stomach = [];
+}
+Person.prototype.greet = function () {
+	return `My name is ${this.name} and I'm ${this.age} years old.`;
+};
+Person.prototype.eat = function (edible) {
+	this.stomach.push(edible);
+	return `${this.name} just ate ${edible}.`;
+};
+Person.prototype.poop = function () {
+	this.stomach = [];
+	return `Stomach is empty now.`;
+};
+var me = new Person('Jasyn', 38);
+console.log(me.greet(), me.eat('Biltong'), me.poop());
+/*
   TASK 2
 
   - Build a Car constructor that takes model name and make.
@@ -63,6 +76,8 @@ Person.prototype.poop = function(){
   - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
   - Give cars the ability to be repaired.
   - A repaired car can be driven again.
+*/
+
 
   TASK 3
 
